@@ -41,5 +41,6 @@
       "prettier --write",
       "git add"
     ]
-  }
+  },
+  "devDependencies": {}
 }
