@@ -7,10 +7,18 @@ function CreateBoard(props) {
   const { setBoardNameAction } = props
 
   const [isForm, setForm] = useState(false)
-  const [boardNameValue, setboardNameValue] = useState('')
+  const [boardNameValue, setBoardNameValue] = useState('')
 
   let handleChange = (e) => {
-    setboardNameValue(e.target.value)
+    setBoardNameValue(e.target.value)
+  }
+
+  let checkBoardName = () => {
+    if (boardNameValue === '') {
+      alert('Empty board name!')
+    } else {
+      setBoardNameAction(boardNameValue)
+    }
   }
 
   if (isForm) {
@@ -37,7 +45,7 @@ function CreateBoard(props) {
             <input
               type="button"
               value="create"
-              onClick={() => setBoardNameAction(boardNameValue)}
+              onClick={() => checkBoardName()}
             />
           </p>
         </div>
@@ -54,7 +62,7 @@ function CreateBoard(props) {
 
 const mapStateToProps = (store) => {
   return {
-    names: store.names,
+    names: store.boards.names,
   }
 }
 
