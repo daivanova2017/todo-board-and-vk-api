@@ -1,13 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setPage } from '../actions/PageActions'
+import { Link } from 'react-router-dom'
 
 function Board(props) {
-  const { setPageAction } = props
+  const { setPageAction, name } = props
   return (
-    <div className="Board" onClick={() => setPageAction('OneBoardPage')}>
-      <h2 className="Board__name">{props.name}</h2>
-    </div>
+    <Link to={`/board/${name}`}>
+      <div className="Board" onClick={() => setPageAction('OneBoardPage')}>
+        <h2 className="Board__name">{name}</h2>
+      </div>
+    </Link>
   )
 }
 
