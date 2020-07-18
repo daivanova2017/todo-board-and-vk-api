@@ -1,7 +1,10 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 function OneBoardPage() {
-  return <div></div>
+  let { boardName } = useParams()
+
+  return <div>{boardName}</div>
 }
 
 export default OneBoardPage
