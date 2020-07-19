@@ -144,3 +144,9 @@ a {
       position: relative;
       top: -73px;
       left: 132px; }
+
+.List {
+  margin: 20px;
+  background-color: white;
+  padding: 5px 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
