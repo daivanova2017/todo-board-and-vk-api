@@ -11,7 +11,7 @@ a {
   width: 80px;
   height: 80px;
   display: flex;
-  margin: 20px;
+  margin: 20px 20px 10px;
   border-radius: 50%;
   background-color: lightblue; }
   .Boards-Nav img, .VK-Nav img {
@@ -26,6 +26,7 @@ a {
   flex-wrap: wrap; }
 
 .createBoard {
+  cursor: pointer;
   background-color: #9fe7a4;
   margin: 20px;
   color: white;
@@ -48,7 +49,7 @@ a {
     align-items: center;
     border-bottom: 1px solid white; }
     .createBoard-form__header__close {
-      width: 20px;
+      cursor: pointer;
       filter: invert(1); }
   .createBoard-form__main {
     display: flex;
@@ -87,3 +88,59 @@ a {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
   .Board__name {
     padding: 10px; }
+
+.one-board-page__name {
+  display: flex;
+  padding: 0 60px; }
+  .one-board-page__name h1 {
+    background-color: #9fe7a4;
+    margin-left: 20px;
+    color: white;
+    text-shadow: 0px 0px 3px #000;
+    padding: 10px 60px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    word-break: break-all; }
+.one-board-page__main {
+  display: flex;
+  padding: 25px 60px 15px; }
+
+.add-list {
+  display: flex;
+  margin: 20px;
+  background-color: #0a2c74;
+  color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  height: 100px;
+  cursor: pointer;
+  padding: 0px 40px;
+  align-items: center;
+  border-radius: 5px; }
+  .add-list_form {
+    padding: 20px 20px;
+    height: 125px;
+    margin: 20px 10px;
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: center; }
+    .add-list_form input {
+      padding: 11px 15px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 2.5px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
+      width: 200px; }
+      .add-list_form input[type=button] {
+        cursor: pointer;
+        background-color: #9fe7a4;
+        border: none; }
+    .add-list_form img {
+      cursor: pointer;
+      filter: invert(1);
+      border: 2px #e5aae1 solid;
+      border-radius: 50%;
+      position: relative;
+      top: -73px;
+      left: 132px; }
