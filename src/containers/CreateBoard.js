@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import closeIcon from '../images/closeIcon.png'
+import close from '../images/close.png'
 import { connect } from 'react-redux'
 import { setBoardName } from '../actions/BoardsActions'
 
@@ -27,7 +27,7 @@ function CreateBoard(props) {
         <div className="createBoard-form__header">
           <h3>Creating a board</h3>
           <img
-            src={closeIcon}
+            src={close}
             className="createBoard-form__header__close"
             onClick={() => setForm(false)}
             alt="close"
