@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { closeIcon } from '../images/closeIcon.png'
+import close from '../images/close.png'
 
 function AddList() {
   const [isAddList, setAddList] = useState(false)
@@ -7,8 +7,9 @@ function AddList() {
   if (isAddList) {
     return (
       <div className="add-list_form">
-        <img src={closeIcon} alt="close" onClick={() => setAddList(false)} />
         <input type="text" placeholder="add a list" />
+        <img src={close} alt="close" onClick={() => setAddList(false)} />
+        <input type="button" value="Add" />
       </div>
     )
   } else {
