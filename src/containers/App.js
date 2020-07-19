@@ -1,15 +1,12 @@
 import React from 'react'
 import Header from '../components/Header'
 import BoardsPage from './BoardsPage'
-import OneBoardPage from '../components/OneBoardPage'
-import { connect } from 'react-redux'
+import OneBoardPage from './OneBoardPage'
 import { Switch, Route } from 'react-router-dom'
 
 import '../style/App.css'
 
-function App(props) {
-  const { names } = props
-
+function App() {
   return (
     <div className="App">
       <Header />
@@ -21,10 +18,4 @@ function App(props) {
   )
 }
 
-const mapStateToProps = (store) => {
-  return {
-    names: store.boards.names,
-  }
-}
-
-export default connect(mapStateToProps)(App)
+export default App

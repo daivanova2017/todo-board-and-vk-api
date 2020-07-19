@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import close from '../images/close.png'
 import { connect } from 'react-redux'
-import { setBoardName } from '../actions/BoardsActions'
+import { setBoardName, addBoard } from '../actions/BoardsActions'
 
 function CreateBoard(props) {
-  const { setBoardNameAction } = props
+  const { setBoardNameAction, addBoardAction } = props
 
   const [isForm, setForm] = useState(false)
   const [boardNameValue, setBoardNameValue] = useState('')
@@ -18,6 +18,7 @@ function CreateBoard(props) {
       alert('Empty board name!')
     } else {
       setBoardNameAction(boardNameValue)
+      addBoardAction(boardNameValue)
     }
   }
 
@@ -69,6 +70,7 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setBoardNameAction: (name) => dispatch(setBoardName(name)),
+    addBoardAction: (name) => dispatch(addBoard(name)),
   }
 }
 
