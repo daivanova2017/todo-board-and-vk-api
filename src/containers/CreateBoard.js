@@ -14,7 +14,7 @@ function CreateBoard(props) {
   }
 
   let checkBoardName = () => {
-    if (boardNameValue === '') {
+    if (boardNameValue.trim() === '') {
       alert('Empty board name!')
     } else {
       setBoardNameAction(boardNameValue)
