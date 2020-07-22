@@ -1,14 +1,18 @@
 import React from 'react'
 import Bulb from '../images/bulb.png'
 import VKLogo from '../images/VKLogo.png'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setPage } from '../actions/PageActions'
 
 function Navigation(props) {
-  const { location, setPageAction } = props
+  const dispatch = useDispatch()
+  const { location } = props
   if (location === 'toBoards') {
     return (
-      <div className="Boards-Nav" onClick={() => setPageAction('boardMenu')}>
+      <div
+        className="Boards-Nav"
+        onClick={() => dispatch(setPage('boardMenu'))}
+      >
         <img src={Bulb} alt="To boards page" />
       </div>
     )
@@ -21,10 +25,4 @@ function Navigation(props) {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setPageAction: (page) => dispatch(setPage(page)),
-  }
-}
-
-export default connect(null, mapDispatchToProps)(Navigation)
+export default Navigation

@@ -1,10 +1,10 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector, shallowEqual } from 'react-redux'
 import CreateBoard from './CreateBoard'
 import Board from './Board'
 
-function BoardsPage(props) {
-  const { names } = props
+function BoardsPage() {
+  const names = useSelector((state) => state.boards.names, shallowEqual)
 
   let getListOfBoards = () => {
     let listOfBoards = names.map((elem) => {
@@ -20,10 +20,4 @@ function BoardsPage(props) {
   )
 }
 
-const mapStateToProps = (store) => {
-  return {
-    names: store.boards.names,
-  }
-}
-
-export default connect(mapStateToProps)(BoardsPage)
+export default BoardsPage

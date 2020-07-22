@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import close from '../images/close.png'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setBoardName, addBoard } from '../actions/BoardsActions'
+import { v4 as uuidv4 } from 'uuid'
 
-function CreateBoard(props) {
-  const { setBoardNameAction, addBoardAction } = props
+function CreateBoard() {
+  const dispatch = useDispatch()
 
   const [isForm, setForm] = useState(false)
   const [boardNameValue, setBoardNameValue] = useState('')
@@ -17,8 +18,9 @@ function CreateBoard(props) {
     if (boardNameValue.trim() === '') {
       alert('Empty board name!')
     } else {
-      setBoardNameAction(boardNameValue)
-      addBoardAction(boardNameValue)
+      const id = uuidv4().slice(0, 8)
+      dispatch(setBoardName(boardNameValue))
+      dispatch(addBoard(id, boardNameValue))
     }
   }
 
@@ -61,17 +63,4 @@ function CreateBoard(props) {
   }
 }
 
-const mapStateToProps = (store) => {
-  return {
-    names: store.boards.names,
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setBoardNameAction: (name) => dispatch(setBoardName(name)),
-    addBoardAction: (name) => dispatch(addBoard(name)),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateBoard)
+export default CreateBoard

@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import close from '../images/close.png'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setListName } from '../actions/ListActions'
 import { addListToBoard } from '../actions/BoardsActions'
 
 function AddList(props) {
-  const { setListNameAction, addListToBoardAction, boardName } = props
+  const dispatch = useDispatch()
+
+  const { boardName } = props
   const [isAddList, setAddList] = useState(false)
   const [listNameValue, setListNameValue] = useState('')
 
@@ -22,8 +24,9 @@ function AddList(props) {
           type="button"
           value="Add"
           onClick={() => {
-            setListNameAction(listNameValue)
-            addListToBoardAction(listNameValue, boardName)
+            console.log('click')
+            dispatch(setListName(listNameValue))
+            dispatch(addListToBoard(listNameValue, boardName))
           }}
         />
       </div>
@@ -37,12 +40,4 @@ function AddList(props) {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setListNameAction: (name) => dispatch(setListName(name)),
-    addListToBoardAction: (name, board) =>
-      dispatch(addListToBoard(name, board)),
-  }
-}
-
-export default connect(null, mapDispatchToProps)(AddList)
+export default AddList

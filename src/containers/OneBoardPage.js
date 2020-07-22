@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams, Redirect } from 'react-router-dom'
 import AddList from './AddList'
 import List from '../components/List'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
-function OneBoardPage(props) {
+function OneBoardPage() {
   let { boardName } = useParams()
-  const { boards } = props
+  const dispatch = useDispatch()
+  const curBoard = useSelector((state) => state.boards[boardName], shallowEqual)
+
+  //TODO: Сделать action получения листов
+  // useEffect(() => {
+  //   getLists()
+  // }, [])
 
   let getLists = () => {
-    let curBoard = boards[boardName].lists
-
-    if (curBoard != []) {
-      let listsOfBoard = curBoard.map((elem) => {
+    console.log('curBoard', curBoard)
+    if (curBoard.lists !== []) {
+      let listsOfBoard = curBoard.lists.map((elem) => {
         return <List listName={elem.name} />
       })
       return listsOfBoard
@@ -20,7 +25,8 @@ function OneBoardPage(props) {
       return ''
     }
   }
-  if (!boards[boardName]) {
+
+  if (!curBoard) {
     return <Redirect to="/" />
   }
   return (
@@ -36,10 +42,4 @@ function OneBoardPage(props) {
   )
 }
 
-const mapStateToProps = (store) => {
-  return {
-    boards: store.boards,
-  }
-}
-
-export default connect(mapStateToProps)(OneBoardPage)
+export default OneBoardPage
