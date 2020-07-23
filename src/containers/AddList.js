@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import close from '../images/close.png'
-import { useDispatch } from 'react-redux'
-import { setListName } from '../actions/ListActions'
-import { addListToBoard } from '../actions/BoardsActions'
+import { useDispatch, useSelector, shallowEqual } from 'react-redux'
+import { addList } from '../actions/ListsCollectionActions'
+import { addListToBoard } from '../actions/ListOfBoardsActions'
+import { v4 as uuidv4 } from 'uuid'
 
-function AddList(props) {
+function AddList() {
   const dispatch = useDispatch()
 
-  const { boardName } = props
+  const currentBoardID = useSelector(
+    (state) => state.currentBoard.id,
+    shallowEqual
+  )
   const [isAddList, setAddList] = useState(false)
   const [listNameValue, setListNameValue] = useState('')
 
@@ -24,9 +28,9 @@ function AddList(props) {
           type="button"
           value="Add"
           onClick={() => {
-            console.log('click')
-            dispatch(setListName(listNameValue))
-            dispatch(addListToBoard(listNameValue, boardName))
+            const listID = uuidv4().slice(0, 8)
+            dispatch(addList(listID, listNameValue))
+            dispatch(addListToBoard(listID, currentBoardID))
           }}
         />
       </div>

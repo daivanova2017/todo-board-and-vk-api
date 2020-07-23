@@ -1,17 +1,16 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setCurrentBoard } from '../actions/PageActions'
+import { useDispatch } from 'react-redux'
+import { setCurrentBoard } from '../actions/CurrentBoardActions'
 import { Link } from 'react-router-dom'
 
 function Board(props) {
   const dispatch = useDispatch()
-  const boardInfo = useSelector((state) => state.boards)
-  const { name } = props
+  const { name, boardID } = props
   return (
     <Link to={`/board/${name}`}>
       <div
         className="Board"
-        onClick={() => dispatch(setCurrentBoard('OneBoardPage'))}
+        onClick={() => dispatch(setCurrentBoard(boardID, name))}
       >
         <h2 className="Board__name">{name}</h2>
       </div>

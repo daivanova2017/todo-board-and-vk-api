@@ -1,24 +1,17 @@
-import React, { useEffect } from 'react'
-import { useParams, Redirect } from 'react-router-dom'
+import React from 'react'
+import { Redirect } from 'react-router-dom'
 import AddList from './AddList'
 import List from '../components/List'
-import { useDispatch, useSelector, shallowEqual } from 'react-redux'
+import { useSelector, shallowEqual } from 'react-redux'
 
 function OneBoardPage() {
-  let { boardName } = useParams()
-  const dispatch = useDispatch()
-  const curBoard = useSelector((state) => state.boards[boardName], shallowEqual)
-
-  //TODO: Сделать action получения листов
-  // useEffect(() => {
-  //   getLists()
-  // }, [])
+  const currentBoard = useSelector((state) => state.currentBoard, shallowEqual)
+  const allLists = useSelector((state) => state.listCollection, shallowEqual)
 
   let getLists = () => {
-    console.log('curBoard', curBoard)
-    if (curBoard.lists !== []) {
-      let listsOfBoard = curBoard.lists.map((elem) => {
-        return <List listName={elem.name} />
+    if (currentBoard.lists !== undefined) {
+      let listsOfBoard = currentBoard.lists.map((elem) => {
+        return <List listName={findList(elem)} />
       })
       return listsOfBoard
     } else {
@@ -26,17 +19,25 @@ function OneBoardPage() {
     }
   }
 
-  if (!curBoard) {
+  let findList = (listID) => {
+    for (let id in allLists) {
+      if (id === listID) {
+        return allLists[id].name
+      }
+    }
+  }
+
+  if (currentBoard.name === '') {
     return <Redirect to="/" />
   }
   return (
     <div className="one-board-page">
       <div className="one-board-page__name">
-        <h1>{boardName}</h1>
+        <h1>{currentBoard.name}</h1>
       </div>
       <div className="one-board-page__main">
         {getLists()}
-        <AddList boardName={boardName} />
+        <AddList />
       </div>
     </div>
   )

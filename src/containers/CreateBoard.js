@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import close from '../images/close.png'
 import { useDispatch } from 'react-redux'
-import { setBoardName, addBoard } from '../actions/BoardsActions'
+import { addBoard } from '../actions/ListOfBoardsActions'
 import { v4 as uuidv4 } from 'uuid'
 
 function CreateBoard() {
@@ -19,7 +19,6 @@ function CreateBoard() {
       alert('Empty board name!')
     } else {
       const id = uuidv4().slice(0, 8)
-      dispatch(setBoardName(boardNameValue))
       dispatch(addBoard(id, boardNameValue))
     }
   }

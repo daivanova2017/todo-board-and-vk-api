@@ -1,18 +1,12 @@
 import React from 'react'
 import Bulb from '../images/bulb.png'
 import VKLogo from '../images/VKLogo.png'
-import { useDispatch } from 'react-redux'
-import { setPage } from '../actions/PageActions'
 
 function Navigation(props) {
-  const dispatch = useDispatch()
   const { location } = props
   if (location === 'toBoards') {
     return (
-      <div
-        className="Boards-Nav"
-        onClick={() => dispatch(setPage('boardMenu'))}
-      >
+      <div className="Boards-Nav">
         <img src={Bulb} alt="To boards page" />
       </div>
     )
