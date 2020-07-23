@@ -125,7 +125,8 @@ a{
   &__main{
     display: flex;
     flex-wrap: wrap;
-    padding: 25px 60px 15px;
+    align-items: flex-start;
+    padding: 15px 60px 15px;
   }
 }
 
@@ -200,5 +201,11 @@ a{
   opacity: 1;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 6px 6px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   text-decoration: none;
+  text-align: center;
   background-color: rgb(202, 255, 222);
+  border-radius: 5px;
+  h3{
+    margin: 10px 0px;
+    padding: 10px 0px;
+  }
 }

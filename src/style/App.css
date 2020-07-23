@@ -103,7 +103,8 @@ a {
 .one-board-page__main {
   display: flex;
   flex-wrap: wrap;
-  padding: 25px 60px 15px; }
+  align-items: flex-start;
+  padding: 15px 60px 15px; }
 
 .add-list {
   display: flex;
@@ -164,4 +165,9 @@ a {
   opacity: 1;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 6px 6px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   text-decoration: none;
-  background-color: #caffde; }
+  text-align: center;
+  background-color: #caffde;
+  border-radius: 5px; }
+  .Note h3 {
+    margin: 10px 0px;
+    padding: 10px 0px; }
