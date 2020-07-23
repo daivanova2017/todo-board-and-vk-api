@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import { boardsReducer } from './boards'
-import { listReducer } from './list'
-import { pageReducer } from './page'
+import { currentBoardReducer } from './currentBoardReducer'
+import { listOfBoardsReducer } from './listOfBoardsReducer'
+import { listCollectionReducer } from './listCollectionReducer'
 
 export const rootReducer = combineReducers({
-  boards: boardsReducer,
-  list: listReducer,
-  page: pageReducer,
+  currentBoard: currentBoardReducer,
+  listOfBoards: listOfBoardsReducer,
+  listCollection: listCollectionReducer,
 })
