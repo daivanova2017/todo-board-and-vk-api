@@ -7,7 +7,7 @@ function Board(props) {
   const dispatch = useDispatch()
   const { name, boardID } = props
   return (
-    <Link to={`/board/${name}`}>
+    <Link to={`/board/${boardID}`}>
       <div
         className="Board"
         onClick={() => dispatch(setCurrentBoard(boardID, name))}

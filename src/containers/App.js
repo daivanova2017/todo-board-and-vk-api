@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={BoardsPage} />
-        <Route exact path="/board/:boardName" component={OneBoardPage} />
+        <Route exact path="/board/:curID" component={OneBoardPage} />
       </Switch>
     </div>
   )
