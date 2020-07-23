@@ -13,7 +13,7 @@ function OneBoardPage() {
   let getLists = () => {
     if (currentBoard.lists !== undefined) {
       let listsOfBoard = currentBoard.lists.map((elem) => {
-        return <List listName={findList(elem)} />
+        return <List listName={findList(elem)} listID={elem} />
       })
       return listsOfBoard
     } else {
