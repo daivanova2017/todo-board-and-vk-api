@@ -22,7 +22,12 @@ function AddList() {
   if (isAddList) {
     return (
       <div className="add-list_form">
-        <input type="text" placeholder="add a list" onChange={handleChange} />
+        <input
+          type="text"
+          placeholder="add a list"
+          onChange={handleChange}
+          autoFocus
+        />
         <img src={close} alt="close" onClick={() => setAddList(false)} />
         <input
           type="button"
