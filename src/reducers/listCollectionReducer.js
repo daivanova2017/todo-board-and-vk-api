@@ -12,7 +12,7 @@ export function listCollectionReducer(state = initialState, action) {
       const listID = action.id
       const listState = state[listID]
 
-      listState.notes.push({ name: action.payload, status: 'inProgress' })
+      listState.notes.push(action.payload)
       return {
         ...state,
         [listID]: listState,
