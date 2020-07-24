@@ -162,12 +162,20 @@ a {
     width: 180px; }
 
 .Note {
-  opacity: 1;
+  padding: 0px 20px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 6px 6px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   text-decoration: none;
   text-align: center;
   background-color: #caffde;
   border-radius: 5px; }
+  .Note.compleated {
+    text-decoration: line-through;
+    color: gray; }
   .Note h3 {
-    margin: 10px 0px;
-    padding: 10px 0px; }
+    margin: 13px 0px; }
+  .Note__close {
+    cursor: pointer; }
