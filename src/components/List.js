@@ -22,6 +22,7 @@ function List(props) {
         const noteID = uuidv4().slice(0, 8)
         dispatch(addNoteToList(noteID, props.listID))
         dispatch(addNote(noteID, noteValue))
+        setNoteValue('')
       }
     }
   }
@@ -59,6 +60,7 @@ function List(props) {
       <input
         type="text"
         maxLength="40"
+        value={noteValue}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
       />

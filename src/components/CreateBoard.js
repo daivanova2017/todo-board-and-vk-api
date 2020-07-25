@@ -20,6 +20,7 @@ function CreateBoard() {
     } else {
       const id = uuidv4().slice(0, 8)
       dispatch(addBoard(id, boardNameValue))
+      setBoardNameValue('')
     }
   }
 
@@ -37,7 +38,13 @@ function CreateBoard() {
         </div>
         <div className="createBoard-form__main">
           <h5>Name of board</h5>
-          <input type="text" maxLength="40" onChange={handleChange} autoFocus />
+          <input
+            type="text"
+            value={boardNameValue}
+            maxLength="40"
+            onChange={handleChange}
+            autoFocus
+          />
           <p className="createBoard-form__main__buttons">
             <input
               type="button"
