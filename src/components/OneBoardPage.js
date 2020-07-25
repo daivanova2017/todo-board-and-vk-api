@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect, useParams } from 'react-router-dom'
 import AddList from './AddList'
-import List from '../components/List'
+import List from './List'
 import { useSelector, shallowEqual } from 'react-redux'
 
 function OneBoardPage() {
