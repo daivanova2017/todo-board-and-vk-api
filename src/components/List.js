@@ -56,7 +56,12 @@ function List(props) {
     <div className="List">
       <h4>{props.listName}</h4>
       <hr />
-      <input type="text" onChange={handleChange} onKeyPress={handleKeyPress} />
+      <input
+        type="text"
+        maxLength="40"
+        onChange={handleChange}
+        onKeyPress={handleKeyPress}
+      />
       {getNotes()}
     </div>
   )

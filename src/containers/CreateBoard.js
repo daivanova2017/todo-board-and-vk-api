@@ -37,7 +37,7 @@ function CreateBoard() {
         </div>
         <div className="createBoard-form__main">
           <h5>Name of board</h5>
-          <input type="text" onChange={handleChange} autoFocus />
+          <input type="text" maxLength="40" onChange={handleChange} autoFocus />
           <p className="createBoard-form__main__buttons">
             <input
               type="button"

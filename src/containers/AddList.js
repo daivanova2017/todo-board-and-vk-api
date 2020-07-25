@@ -28,7 +28,12 @@ function AddList() {
           onChange={handleChange}
           autoFocus
         />
-        <img src={close} alt="close" onClick={() => setAddList(false)} />
+        <img
+          src={close}
+          alt="close"
+          maxLength="40"
+          onClick={() => setAddList(false)}
+        />
         <input
           type="button"
           value="Add"
