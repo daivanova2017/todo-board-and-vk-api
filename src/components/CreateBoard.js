@@ -43,6 +43,7 @@ function CreateBoard() {
             value={boardNameValue}
             maxLength="40"
             onChange={handleChange}
+            placeholder="Board name..."
             autoFocus
           />
           <p className="createBoard-form__main__buttons">
