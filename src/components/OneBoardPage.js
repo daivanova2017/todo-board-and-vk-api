@@ -7,13 +7,21 @@ import { useSelector, shallowEqual } from 'react-redux'
 function OneBoardPage() {
   const { curID } = useParams()
   const currentBoard = useSelector((state) => state.currentBoard, shallowEqual)
-  const allLists = useSelector((state) => state.listCollection, shallowEqual)
-  const allBoards = useSelector((state) => state.listOfBoards, shallowEqual)
+  const allLists = useSelector(
+    (state) => state.listCollection.allLists,
+    shallowEqual
+  )
+  const allBoards = useSelector(
+    (state) => state.listOfBoards.boards,
+    shallowEqual
+  )
 
   let getLists = () => {
-    if (currentBoard.lists !== undefined) {
+    console.log('currentBoard', currentBoard)
+    if (currentBoard.lists !== []) {
       let listsOfBoard = currentBoard.lists.map((elem) => {
-        return <List listName={findList(elem)} listID={elem} />
+        let curList = allLists.find((list) => list.id === elem)
+        return <List listName={curList.name} listID={elem} />
       })
       return listsOfBoard
     } else {
@@ -21,23 +29,11 @@ function OneBoardPage() {
     }
   }
 
-  let findList = (listID) => {
-    for (let id in allLists) {
-      if (id === listID) {
-        return allLists[id].name
-      }
-    }
-  }
-
   let checkURL = () => {
-    let result = false
-    for (const boardID in allBoards) {
-      if (boardID === curID) {
-        result = true
-        break
-      }
-    }
-    if (!result) {
+    let result = allBoards.filter((elem) => {
+      return elem.id === curID
+    })
+    if (result === []) {
       return <Redirect to="/" />
     }
   }

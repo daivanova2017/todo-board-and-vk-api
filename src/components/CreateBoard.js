@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import close from '../images/close.png'
 import { useDispatch } from 'react-redux'
 import { addBoard } from '../actions/ListOfBoardsActions'
-import { v4 as uuidv4 } from 'uuid'
 
 function CreateBoard() {
   const dispatch = useDispatch()
@@ -18,8 +17,7 @@ function CreateBoard() {
     if (boardNameValue.trim() === '') {
       alert('Empty board name!')
     } else {
-      const id = uuidv4().slice(0, 8)
-      dispatch(addBoard(id, boardNameValue))
+      dispatch(addBoard(boardNameValue))
       setBoardNameValue('')
     }
   }
@@ -52,11 +50,7 @@ function CreateBoard() {
               onClick={() => setForm(false)}
               value="cancel"
             />
-            <input
-              type="button"
-              value="create"
-              onClick={() => checkBoardName()}
-            />
+            <button onClick={() => checkBoardName()}>Create</button>
           </p>
         </div>
       </div>

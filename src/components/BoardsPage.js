@@ -4,16 +4,15 @@ import CreateBoard from './CreateBoard'
 import Board from './Board'
 
 function BoardsPage() {
-  const boards = useSelector((state) => state.listOfBoards, shallowEqual)
+  const boards = useSelector((state) => state.listOfBoards.boards, shallowEqual)
 
   let getListOfBoards = () => {
-    if (boards === {}) {
+    if (boards.length === 0) {
       return ''
     } else {
-      let showBoards = []
-      for (const key in boards) {
-        showBoards.push(<Board boardID={key} name={boards[key].name} />)
-      }
+      let showBoards = boards.map((board) => {
+        return <Board key={board.id} boardID={board.id} name={board.name} />
+      })
       return showBoards
     }
   }

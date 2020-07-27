@@ -8,10 +8,7 @@ function Board(props) {
   const { name, boardID } = props
   return (
     <Link to={`/board/${boardID}`}>
-      <div
-        className="Board"
-        onClick={() => dispatch(setCurrentBoard(boardID, name))}
-      >
+      <div className="Board" onClick={() => dispatch(setCurrentBoard(boardID))}>
         <h2 className="Board__name">{name}</h2>
       </div>
     </Link>
