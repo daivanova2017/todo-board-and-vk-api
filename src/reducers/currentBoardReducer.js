@@ -9,9 +9,9 @@ export function currentBoardReducer(state = initialState, action) {
     case 'SET_CURRENT_BOARD':
       return {
         ...state,
-        id: action.id,
-        name: action.payload,
-        lists: action.lists,
+        id: action.payload.id,
+        name: action.payload.name,
+        lists: action.payload.lists,
       }
     case 'UPDATE_CURRENT_BOARD':
       return {
