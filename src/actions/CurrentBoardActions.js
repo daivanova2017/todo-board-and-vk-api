@@ -1,19 +1,11 @@
 import { store } from '../store/configureStore'
 
-export function setCurrentBoard(id, board) {
-  const allBoards = store.getState().listOfBoards
-  let listsOfBoard = []
-  for (const boardID in allBoards) {
-    if (boardID === id) {
-      listsOfBoard = allBoards[boardID].lists
-      break
-    }
-  }
+export function setCurrentBoard(id) {
+  const allBoards = store.getState().listOfBoards.boards
+  let curBoard = allBoards.find((board) => board.id === id)
   return {
     type: 'SET_CURRENT_BOARD',
-    payload: board,
-    id: id,
-    lists: listsOfBoard,
+    payload: curBoard,
   }
 }
 
