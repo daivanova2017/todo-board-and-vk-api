@@ -13,6 +13,14 @@ function CreateBoard() {
     setBoardNameValue(e.target.value)
   }
 
+  let handleKeyUp = (e) => {
+    if (e.key === 'Enter') {
+      checkBoardName()
+    } else if (e.key === 'Escape') {
+      setForm(false)
+    }
+  }
+
   let checkBoardName = () => {
     if (boardNameValue.trim() === '') {
       alert('Empty board name!')
@@ -41,6 +49,7 @@ function CreateBoard() {
             value={boardNameValue}
             maxLength="40"
             onChange={handleChange}
+            onKeyUp={handleKeyUp}
             placeholder="Board name..."
             autoFocus
           />

@@ -19,6 +19,12 @@ function AddList() {
     setListNameValue(e.target.value)
   }
 
+  let handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      checkListName()
+    }
+  }
+
   let checkListName = () => {
     if (listNameValue.trim() === '') {
       alert('Empty list name!')
@@ -38,6 +44,7 @@ function AddList() {
           placeholder="add a list"
           value={listNameValue}
           onChange={handleChange}
+          onKeyPress={handleKeyPress}
           autoFocus
         />
         <img
