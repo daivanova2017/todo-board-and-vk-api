@@ -74,19 +74,23 @@ a{
       margin: 20px 0 5px 0;
       display: flex;
       justify-content: flex-end;
-      input{
+
+      button{
         text-transform: uppercase;
         font-size: 12px;
         padding: 15px 25px;
         border: none;
-        
-        &[value='cancel']{
-          background-color: rgb(159,231,164);
-          color: white;
-          text-shadow: 0px 0px 2.5px #000;
-          box-shadow: none;
-          font-weight: 900;
-        }
+      }
+
+      &__create{
+        box-shadow: 0 3px 3px rgba(0,0,0,0.16), 0 3px 3px rgba(0,0,0,0.23);
+      }
+
+      &__cancel{
+        background-color: rgb(159,231,164);
+        color: white;
+        text-shadow: 0px 0px 2.5px #000;
+        font-weight: 900;
       }
     }
   }
