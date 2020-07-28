@@ -16,6 +16,7 @@ function List(props) {
     (state) => state.noteCollection.allNotes,
     shallowEqual
   )
+  const curList = allLists.find((list) => list.id === props.listID)
 
   let handleChange = (e) => {
     setNoteValue(e.target.value)
@@ -23,20 +24,30 @@ function List(props) {
 
   let handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      if (noteValue === '') {
-        alert('Empty note')
-      } else {
-        const noteID = uuidv4().slice(0, 8)
-        dispatch(addNoteToList(noteID, props.listID))
-        dispatch(addNote(noteID, noteValue))
-        setNoteValue('')
-      }
+      checkNoteName()
+    }
+  }
+
+  let checkNoteName = () => {
+    let sameNote = curList.notes.find((noteID) =>
+      allNotes.find(
+        (note) => note.id === noteID && note.name === noteValue.trim()
+      )
+    )
+
+    if (sameNote) {
+      alert('This note is already exists on this list')
+    } else if (noteValue.trim() === '') {
+      alert('Empty note')
+    } else {
+      const noteID = uuidv4().slice(0, 8)
+      dispatch(addNoteToList(noteID, props.listID))
+      dispatch(addNote(noteID, noteValue))
+      setNoteValue('')
     }
   }
 
   let getNotes = () => {
-    const curList = allLists.find((list) => list.id === props.listID)
-
     if (curList.notes !== undefined) {
       let notes = curList.notes.map((noteID) => {
         const curNote = allNotes.find((note) => note.id === noteID)

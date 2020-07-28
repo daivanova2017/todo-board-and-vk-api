@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import close from '../images/close.png'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { addBoard } from '../actions/ListOfBoardsActions'
 
 function CreateBoard() {
   const dispatch = useDispatch()
+  const allBoards = useSelector(
+    (state) => state.listOfBoards.boards,
+    shallowEqual
+  )
 
   const [isForm, setForm] = useState(false)
   const [boardNameValue, setBoardNameValue] = useState('')
@@ -24,6 +28,10 @@ function CreateBoard() {
   let checkBoardName = () => {
     if (boardNameValue.trim() === '') {
       alert('Empty board name!')
+    } else if (
+      allBoards.find((board) => board.name === boardNameValue.trim())
+    ) {
+      alert('This board is already exist')
     } else {
       dispatch(addBoard(boardNameValue))
       setBoardNameValue('')
