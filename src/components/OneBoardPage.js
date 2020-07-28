@@ -6,7 +6,10 @@ import { useSelector, shallowEqual } from 'react-redux'
 
 function OneBoardPage() {
   const { curID } = useParams()
-  const currentBoard = useSelector((state) => state.currentBoard, shallowEqual)
+  const currentBoard = useSelector(
+    (state) => state.currentBoard.curBoard,
+    shallowEqual
+  )
   const allLists = useSelector(
     (state) => state.listCollection.allLists,
     shallowEqual
@@ -20,7 +23,14 @@ function OneBoardPage() {
     if (currentBoard.lists !== []) {
       let listsOfBoard = currentBoard.lists.map((listID) => {
         let curList = allLists.find((list) => list.id === listID)
-        return <List key={listID} listName={curList.name} listID={listID} />
+        return (
+          <List
+            key={listID}
+            listName={curList.name}
+            listID={listID}
+            boardID={curID}
+          />
+        )
       })
       return listsOfBoard
     } else {

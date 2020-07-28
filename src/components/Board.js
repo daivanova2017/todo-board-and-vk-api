@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { setCurrentBoard } from '../actions/CurrentBoardActions'
+import { findCurrentBoard } from '../actions/CurrentBoardActions'
 import { deleteBoard } from '../actions/ListOfBoardsActions'
 import { Link } from 'react-router-dom'
 
@@ -24,7 +24,7 @@ function Board(props) {
       <Link to={`/board/${boardID}`}>
         <h2
           className="Board__name"
-          onClick={() => dispatch(setCurrentBoard(boardID))}
+          onClick={() => dispatch(findCurrentBoard(boardID))}
         >
           {name}
         </h2>

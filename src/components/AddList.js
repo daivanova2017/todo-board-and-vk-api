@@ -8,7 +8,10 @@ import { v4 as uuidv4 } from 'uuid'
 function AddList() {
   const dispatch = useDispatch()
 
-  const currentBoard = useSelector((state) => state.currentBoard, shallowEqual)
+  const currentBoard = useSelector(
+    (state) => state.currentBoard.curBoard,
+    shallowEqual
+  )
   const allLists = useSelector(
     (state) => state.listCollection.allLists,
     shallowEqual
