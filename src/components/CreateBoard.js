@@ -45,12 +45,18 @@ function CreateBoard() {
             autoFocus
           />
           <p className="createBoard-form__main__buttons">
-            <input
-              type="button"
+            <button
+              className="createBoard-form__main__buttons__cancel"
               onClick={() => setForm(false)}
-              value="cancel"
-            />
-            <button onClick={() => checkBoardName()}>Create</button>
+            >
+              cancel
+            </button>
+            <button
+              className="createBoard-form__main__buttons__create"
+              onClick={() => checkBoardName()}
+            >
+              create
+            </button>
           </p>
         </div>
       </div>
