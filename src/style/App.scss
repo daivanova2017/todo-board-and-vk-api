@@ -197,6 +197,19 @@ a{
   padding: 5px 10px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
+  &__delete{
+    width: 20px;
+    color: red;
+    opacity: 0.5;
+    position: relative;
+    left: 92%;
+    cursor: pointer;
+  }
+
+  h4{
+    margin-top: 0;
+  }
+
   hr{
     width: 100%;
   }

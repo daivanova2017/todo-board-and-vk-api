@@ -160,6 +160,15 @@ a {
   background-color: white;
   padding: 5px 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+  .List__delete {
+    width: 20px;
+    color: red;
+    opacity: 0.5;
+    position: relative;
+    left: 92%;
+    cursor: pointer; }
+  .List h4 {
+    margin-top: 0; }
   .List hr {
     width: 100%; }
   .List input {
