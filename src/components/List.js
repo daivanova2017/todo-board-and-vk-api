@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { addNote } from '../actions/NoteCollectionActions'
-import { addNoteToList } from '../actions/ListsCollectionActions'
+import { addNoteToList, deleteList } from '../actions/ListsCollectionActions'
+import { removeListFromBoard } from '../actions/ListOfBoardsActions'
 import { v4 as uuidv4 } from 'uuid'
 import Note from './Note'
 
@@ -17,6 +18,15 @@ function List(props) {
     shallowEqual
   )
   const curList = allLists.find((list) => list.id === props.listID)
+
+  let checkDeletion = () => {
+    let isDelete = window.confirm('Are you sure you want to delete this list?')
+
+    if (isDelete) {
+      dispatch(deleteList(props.listID))
+      dispatch(removeListFromBoard(props.listID, props.boardID))
+    }
+  }
 
   let handleChange = (e) => {
     setNoteValue(e.target.value)
@@ -68,6 +78,9 @@ function List(props) {
 
   return (
     <div className="List">
+      <div className="List__delete" onClick={() => checkDeletion()}>
+        &#10008;
+      </div>
       <h4>{props.listName}</h4>
       <hr />
       <input
