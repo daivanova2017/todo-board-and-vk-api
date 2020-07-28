@@ -1,25 +1,13 @@
-const initialState = {}
+const initialState = {
+  allNotes: [],
+}
 
 export function noteCollectionReducer(state = initialState, action) {
   switch (action.type) {
-    case 'ADD_NOTE':
+    case 'SET_NOTES':
       return {
         ...state,
-        [action.id]: {
-          id: action.id,
-          name: action.payload,
-          status: 'inProgress',
-        },
-      }
-    case 'CHANGE_NOTE_STATUS':
-      const noteID = action.id
-
-      return {
-        ...state,
-        [noteID]: {
-          ...state[noteID],
-          status: action.payload,
-        },
+        allNotes: action.payload,
       }
     default:
       return state
