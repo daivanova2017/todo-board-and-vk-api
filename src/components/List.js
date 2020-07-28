@@ -67,6 +67,7 @@ function List(props) {
             name={curNote.name}
             ID={noteID}
             status={curNote.status}
+            listID={props.listID}
           />
         )
       })
