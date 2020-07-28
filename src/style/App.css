@@ -22,7 +22,7 @@ a {
 .BoardsPage {
   padding: 35px 60px;
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   flex-wrap: wrap; }
 
 .createBoard {
@@ -32,7 +32,7 @@ a {
   color: white;
   text-shadow: 0px 0px 2.5px #000;
   border-radius: 5px;
-  width: 300px;
+  width: 270px;
   height: auto;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   display: flex;
@@ -84,11 +84,15 @@ a {
   padding-bottom: 15px;
   border-radius: 5px;
   text-align: center;
-  width: 300px;
+  width: 270px;
   height: auto;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
-  .Board__name {
-    padding: 10px; }
+  .Board__delete {
+    color: red;
+    opacity: 0.5;
+    position: relative;
+    left: 40%;
+    cursor: pointer; }
 
 .one-board-page__name {
   display: flex;
@@ -149,11 +153,15 @@ a {
       left: 132px; }
 
 .List {
+  word-break: break-all;
+  max-width: 220px;
   margin: 20px;
   text-align: center;
   background-color: white;
   padding: 5px 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+  .List hr {
+    width: 100%; }
   .List input {
     padding: 11px 15px;
     font-size: 16px;
