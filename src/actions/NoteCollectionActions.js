@@ -35,6 +35,19 @@ export function changeNoteStatus(id) {
   }
 }
 
+export function deleteNote(noteID) {
+  return (dispatch, getState) => {
+    const allNotes = [...getState().noteCollection.allNotes]
+
+    const noteIndex = allNotes.findIndex((note) => {
+      return note.id === noteID
+    })
+    allNotes.splice(noteIndex, 1)
+
+    dispatch(setNotes(allNotes))
+  }
+}
+
 export const setNotes = (listOfNotes) => {
   return {
     type: 'SET_NOTES',
