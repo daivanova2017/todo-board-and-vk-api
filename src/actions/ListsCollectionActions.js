@@ -39,6 +39,27 @@ export function addNoteToList(noteID, listID) {
   }
 }
 
+export function removeNoteFromList(noteID, listID) {
+  return (dispatch, getState) => {
+    const allLists = [...getState().listCollection.allLists]
+
+    const curList = allLists.find((list) => {
+      return list.id === listID
+    })
+    const noteIndex = curList.notes.findIndex((noteId) => {
+      return noteId === noteID
+    })
+    curList.notes.splice(noteIndex, 1)
+
+    const listIndex = allLists.findIndex((list) => {
+      return list.id === listID
+    })
+    allLists.splice(listIndex, 1, curList)
+
+    dispatch(setLists(allLists))
+  }
+}
+
 export const setLists = (allLists) => {
   return {
     type: 'SET_LISTS',
