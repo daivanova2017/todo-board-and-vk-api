@@ -1,7 +1,5 @@
 const initialState = {
-  id: null,
-  name: '',
-  lists: [],
+  curBoard: {},
 }
 
 export function currentBoardReducer(state = initialState, action) {
@@ -9,14 +7,7 @@ export function currentBoardReducer(state = initialState, action) {
     case 'SET_CURRENT_BOARD':
       return {
         ...state,
-        id: action.payload.id,
-        name: action.payload.name,
-        lists: action.payload.lists,
-      }
-    case 'UPDATE_CURRENT_BOARD':
-      return {
-        ...state,
-        lists: [...state.lists, action.payload],
+        curBoard: action.payload,
       }
     default:
       return state
