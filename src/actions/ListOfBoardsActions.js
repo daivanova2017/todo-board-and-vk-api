@@ -16,6 +16,7 @@ export function addBoard(boardName) {
 export function addListToBoard(listID, boardID) {
   return (dispatch, getState) => {
     const listOfBoards = [...getState().listOfBoards.boards]
+
     const curBoard = listOfBoards.find((board) => {
       return board.id === boardID
     })
@@ -24,6 +25,20 @@ export function addListToBoard(listID, boardID) {
       return board.id === boardID
     })
     listOfBoards.splice(boardIndex, 1, curBoard)
+
+    dispatch(setBoards(listOfBoards))
+  }
+}
+
+export function deleteBoard(boardID) {
+  return (dispatch, getState) => {
+    const listOfBoards = [...getState().listOfBoards.boards]
+
+    const boardIndex = listOfBoards.findIndex((board) => {
+      return board.id === boardID
+    })
+    listOfBoards.splice(boardIndex, 1)
+
     dispatch(setBoards(listOfBoards))
   }
 }
