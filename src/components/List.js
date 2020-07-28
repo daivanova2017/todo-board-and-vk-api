@@ -8,12 +8,19 @@ import Note from './Note'
 function List(props) {
   const [noteValue, setNoteValue] = useState('')
   const dispatch = useDispatch()
-  const allLists = useSelector((state) => state.listCollection, shallowEqual)
-  const allNotes = useSelector((state) => state.noteCollection, shallowEqual)
+  const allLists = useSelector(
+    (state) => state.listCollection.allLists,
+    shallowEqual
+  )
+  const allNotes = useSelector(
+    (state) => state.noteCollection.allNotes,
+    shallowEqual
+  )
 
   let handleChange = (e) => {
     setNoteValue(e.target.value)
   }
+
   let handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       if (noteValue === '') {
@@ -26,19 +33,20 @@ function List(props) {
       }
     }
   }
+
   let getNotes = () => {
-    let currListNotes
-    for (const key in allLists) {
-      if (key === props.listID) {
-        currListNotes = allLists[key].notes
-        break
-      }
-    }
-    if (currListNotes !== undefined) {
-      let notes = currListNotes.map((elem) => {
-        const curNote = findNote(elem)
+    const curList = allLists.find((list) => list.id === props.listID)
+
+    if (curList.notes !== undefined) {
+      let notes = curList.notes.map((noteID) => {
+        const curNote = allNotes.find((note) => note.id === noteID)
         return (
-          <Note name={curNote.name} ID={elem} status={curNote.status}></Note>
+          <Note
+            key={noteID}
+            name={curNote.name}
+            ID={noteID}
+            status={curNote.status}
+          />
         )
       })
       return notes
@@ -46,13 +54,7 @@ function List(props) {
       return ''
     }
   }
-  let findNote = (note) => {
-    for (const key in allNotes) {
-      if (key === note) {
-        return allNotes[key]
-      }
-    }
-  }
+
   return (
     <div className="List">
       <h4>{props.listName}</h4>

@@ -17,11 +17,10 @@ function OneBoardPage() {
   )
 
   let getLists = () => {
-    console.log('currentBoard', currentBoard)
     if (currentBoard.lists !== []) {
-      let listsOfBoard = currentBoard.lists.map((elem) => {
-        let curList = allLists.find((list) => list.id === elem)
-        return <List listName={curList.name} listID={elem} />
+      let listsOfBoard = currentBoard.lists.map((listID) => {
+        let curList = allLists.find((list) => list.id === listID)
+        return <List key={listID} listName={curList.name} listID={listID} />
       })
       return listsOfBoard
     } else {
@@ -30,8 +29,8 @@ function OneBoardPage() {
   }
 
   let checkURL = () => {
-    let result = allBoards.filter((elem) => {
-      return elem.id === curID
+    let result = allBoards.filter((board) => {
+      return board.id === curID
     })
     if (result === []) {
       return <Redirect to="/" />
