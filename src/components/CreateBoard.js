@@ -26,13 +26,17 @@ function CreateBoard() {
   }
 
   let checkBoardName = () => {
+    let isAdd = true
     if (boardNameValue.trim() === '') {
       alert('Empty board name!')
-    } else if (
-      allBoards.find((board) => board.name === boardNameValue.trim())
-    ) {
-      alert('This board is already exist')
-    } else {
+      isAdd = false
+    } else if (allBoards.length !== 0) {
+      if (allBoards.find((board) => board.name === boardNameValue.trim())) {
+        alert('This board is already exist')
+        isAdd = false
+      }
+    }
+    if (isAdd) {
       dispatch(addBoard(boardNameValue))
       setBoardNameValue('')
     }

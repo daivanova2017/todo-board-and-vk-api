@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, shallowEqual } from 'react-redux'
 import CreateBoard from './CreateBoard'
 import Board from './Board'
 
 function BoardsPage() {
   const boards = useSelector((state) => state.listOfBoards.boards, shallowEqual)
+
+  useEffect(() => {
+    localStorage.setItem('boards', JSON.stringify(boards))
+  })
 
   let getListOfBoards = () => {
     if (boards.length === 0) {

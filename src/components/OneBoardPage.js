@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Redirect, useParams } from 'react-router-dom'
 import AddList from './AddList'
 import List from './List'
@@ -18,6 +18,15 @@ function OneBoardPage() {
     (state) => state.listOfBoards.boards,
     shallowEqual
   )
+
+  useEffect(() => {
+    localStorage.setItem('allLists', JSON.stringify(allLists))
+    localStorage.setItem('curBoard', JSON.stringify(currentBoard))
+    return () => {
+      localStorage.setItem('allLists', JSON.stringify(allLists))
+      localStorage.setItem('curBoard', JSON.stringify(currentBoard))
+    }
+  }, [])
 
   let getLists = () => {
     if (currentBoard.lists) {
