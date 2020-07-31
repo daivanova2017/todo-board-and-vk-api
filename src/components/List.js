@@ -1,30 +1,28 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { addNote } from '../actions/NoteCollectionActions'
-import { addNoteToList, deleteList } from '../actions/ListsCollectionActions'
-import { removeListFromBoard } from '../actions/ListOfBoardsActions'
+import { deleteList } from '../actions/ListsCollectionActions'
+import { removeListFromCurBoard } from '../actions/CurrentBoardActions'
 import { v4 as uuidv4 } from 'uuid'
 import Note from './Note'
 
 function List(props) {
+  const { listID, listName } = props
   const [noteValue, setNoteValue] = useState('')
   const dispatch = useDispatch()
-  const allLists = useSelector(
-    (state) => state.listCollection.allLists,
-    shallowEqual
-  )
+
   const allNotes = useSelector(
     (state) => state.noteCollection.allNotes,
     shallowEqual
   )
-  const curList = allLists.find((list) => list.id === props.listID)
+  let notes = allNotes.filter((note) => note.list === listID)
 
   let checkDeletion = () => {
     let isDelete = window.confirm('Are you sure you want to delete this list?')
 
     if (isDelete) {
-      dispatch(deleteList(props.listID))
-      dispatch(removeListFromBoard(props.listID, props.boardID))
+      dispatch(deleteList(listID))
+      dispatch(removeListFromCurBoard(listID))
     }
   }
 
@@ -39,11 +37,7 @@ function List(props) {
   }
 
   let checkNoteName = () => {
-    let sameNote = curList.notes.find((noteID) =>
-      allNotes.find(
-        (note) => note.id === noteID && note.name === noteValue.trim()
-      )
-    )
+    let sameNote = notes.find((note) => note.name === noteValue.trim())
 
     if (sameNote) {
       alert('This note is already exists on this list')
@@ -51,27 +45,24 @@ function List(props) {
       alert('Empty note')
     } else {
       const noteID = uuidv4().slice(0, 8)
-      dispatch(addNoteToList(noteID, props.listID))
-      dispatch(addNote(noteID, noteValue))
+      dispatch(addNote(noteID, noteValue, listID))
       setNoteValue('')
     }
   }
 
   let getNotes = () => {
-    if (curList.notes !== undefined) {
-      let notes = curList.notes.map((noteID) => {
-        const curNote = allNotes.find((note) => note.id === noteID)
+    if (notes) {
+      let showNotes = notes.map((note) => {
         return (
           <Note
-            key={noteID}
-            name={curNote.name}
-            ID={noteID}
-            status={curNote.status}
-            listID={props.listID}
+            key={note.id}
+            name={note.name}
+            ID={note.id}
+            status={note.status}
           />
         )
       })
-      return notes
+      return showNotes
     } else {
       return ''
     }
@@ -82,7 +73,7 @@ function List(props) {
       <div className="List__delete" onClick={() => checkDeletion()}>
         &#10008;
       </div>
-      <h4>{props.listName}</h4>
+      <h4>{listName}</h4>
       <hr />
       <input
         type="text"

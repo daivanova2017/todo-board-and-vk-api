@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import close from '../images/close.png'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { addList } from '../actions/ListsCollectionActions'
-import { addListToBoard } from '../actions/ListOfBoardsActions'
+import { addListToCurBoard } from '../actions/CurrentBoardActions'
 import { v4 as uuidv4 } from 'uuid'
 
 function AddList() {
@@ -42,8 +42,8 @@ function AddList() {
       alert('Empty list name!')
     } else {
       const listID = uuidv4().slice(0, 8)
-      dispatch(addList(listID, listNameValue))
-      dispatch(addListToBoard(listID, currentBoard.id))
+      dispatch(addList(listID, listNameValue, currentBoard.id))
+      dispatch(addListToCurBoard(listID))
       setListNameValue('')
     }
   }
