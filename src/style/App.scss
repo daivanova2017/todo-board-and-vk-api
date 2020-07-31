@@ -108,10 +108,11 @@ a{
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   
   &__delete{
+    width: 20px;
     color: red;
     opacity: 0.5;
     position: relative;
-    left: 40%;
+    left: 90%;
     cursor: pointer;
   }
 }
@@ -232,18 +233,25 @@ a{
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 6px 6px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   text-decoration: none;
-  text-align: center;
+  text-align: left;
   background-color: rgb(202, 255, 222);
   border-radius: 5px;
 
   &.compleated{
-    text-decoration: line-through;
+    .Note__close, h3{
+      text-decoration: line-through;
+    }
     color: gray;
   }
   h3{
     margin: 13px 0px;
+    flex: 0.9;
   }
-  &__close{
+  &__close, &__delete{
     cursor: pointer;
+    opacity: 0.6;
+  }
+  &__delete{
+    color: red;
   }
 }

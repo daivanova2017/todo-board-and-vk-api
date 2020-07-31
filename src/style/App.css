@@ -88,10 +88,11 @@ a {
   height: auto;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
   .Board__delete {
+    width: 20px;
     color: red;
     opacity: 0.5;
     position: relative;
-    left: 40%;
+    left: 90%;
     cursor: pointer; }
 
 .one-board-page__name {
@@ -187,13 +188,18 @@ a {
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 6px 6px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   text-decoration: none;
-  text-align: center;
+  text-align: left;
   background-color: #caffde;
   border-radius: 5px; }
   .Note.compleated {
-    text-decoration: line-through;
     color: gray; }
+    .Note.compleated .Note__close, .Note.compleated h3 {
+      text-decoration: line-through; }
   .Note h3 {
-    margin: 13px 0px; }
-  .Note__close {
-    cursor: pointer; }
+    margin: 13px 0px;
+    flex: 0.9; }
+  .Note__close, .Note__delete {
+    cursor: pointer;
+    opacity: 0.6; }
+  .Note__delete {
+    color: red; }
