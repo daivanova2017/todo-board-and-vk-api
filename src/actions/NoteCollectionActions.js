@@ -1,8 +1,9 @@
-export function addNote(id, noteName) {
+export function addNote(noteID, noteName, listID) {
   return (dispatch, getState) => {
     const newNote = {
-      id: id,
+      id: noteID,
       name: noteName,
+      list: listID,
       status: 'inProgress',
     }
     const newNotes = [...getState().noteCollection.allNotes, newNote]

@@ -1,9 +1,9 @@
-export function addList(id, listName) {
+export function addList(listID, listName, boardID) {
   return (dispatch, getState) => {
     const newList = {
-      id: id,
+      id: listID,
       name: listName,
-      notes: [],
+      board: boardID,
     }
     let newLists = [...getState().listCollection.allLists, newList]
 
@@ -19,42 +19,6 @@ export function deleteList(listID) {
       return list.id === listID
     })
     allLists.splice(listIndex, 1)
-
-    dispatch(setLists(allLists))
-  }
-}
-
-export function addNoteToList(noteID, listID) {
-  return (dispatch, getState) => {
-    const allLists = [...getState().listCollection.allLists]
-    const curList = allLists.find((list) => list.id === listID)
-
-    curList.notes.push(noteID)
-    const listIndex = allLists.findIndex((list) => {
-      return list.id === listID
-    })
-    allLists.splice(listIndex, 1, curList)
-
-    dispatch(setLists(allLists))
-  }
-}
-
-export function removeNoteFromList(noteID, listID) {
-  return (dispatch, getState) => {
-    const allLists = [...getState().listCollection.allLists]
-
-    const curList = allLists.find((list) => {
-      return list.id === listID
-    })
-    const noteIndex = curList.notes.findIndex((noteId) => {
-      return noteId === noteID
-    })
-    curList.notes.splice(noteIndex, 1)
-
-    const listIndex = allLists.findIndex((list) => {
-      return list.id === listID
-    })
-    allLists.splice(listIndex, 1, curList)
 
     dispatch(setLists(allLists))
   }
