@@ -1,5 +1,7 @@
 const initialState = {
-  curBoard: {},
+  curBoard: localStorage.getItem('curBoard')
+    ? JSON.parse(localStorage.getItem('curBoard'))
+    : {},
 }
 
 export function currentBoardReducer(state = initialState, action) {

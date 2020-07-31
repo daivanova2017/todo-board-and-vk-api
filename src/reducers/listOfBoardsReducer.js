@@ -1,5 +1,7 @@
 const initialState = {
-  boards: [],
+  boards: localStorage.getItem('boards')
+    ? JSON.parse(localStorage.getItem('boards'))
+    : [],
 }
 
 export function listOfBoardsReducer(state = initialState, action) {

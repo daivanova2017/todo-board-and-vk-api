@@ -1,5 +1,7 @@
 const initialState = {
-  allLists: [],
+  allLists: localStorage.getItem('allLists')
+    ? JSON.parse(localStorage.getItem('allLists'))
+    : [],
 }
 
 export function listCollectionReducer(state = initialState, action) {

@@ -1,5 +1,7 @@
 const initialState = {
-  allNotes: [],
+  allNotes: localStorage.getItem('allNotes')
+    ? JSON.parse(localStorage.getItem('allNotes'))
+    : [],
 }
 
 export function noteCollectionReducer(state = initialState, action) {
