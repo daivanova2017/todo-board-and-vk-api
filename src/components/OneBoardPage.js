@@ -2,10 +2,12 @@ import React, { useEffect } from 'react'
 import { Redirect, useParams } from 'react-router-dom'
 import AddList from './AddList'
 import List from './List'
-import { useSelector, shallowEqual } from 'react-redux'
+import { setCurrentBoard } from '../actions/CurrentBoardActions'
+import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
 function OneBoardPage() {
   const { curID } = useParams()
+  const dispatch = useDispatch()
   const currentBoard = useSelector(
     (state) => state.currentBoard.curBoard,
     shallowEqual
@@ -20,11 +22,8 @@ function OneBoardPage() {
   )
 
   useEffect(() => {
-    localStorage.setItem('allLists', JSON.stringify(allLists))
-    localStorage.setItem('curBoard', JSON.stringify(currentBoard))
     return () => {
-      localStorage.setItem('allLists', JSON.stringify(allLists))
-      localStorage.setItem('curBoard', JSON.stringify(currentBoard))
+      dispatch(setCurrentBoard({}))
     }
   }, [])
 
