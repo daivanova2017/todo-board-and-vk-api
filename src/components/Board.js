@@ -3,15 +3,17 @@ import { useDispatch } from 'react-redux'
 import { findCurrentBoard } from '../actions/CurrentBoardActions'
 import { deleteBoard } from '../actions/ListOfBoardsActions'
 import { Link } from 'react-router-dom'
+import { deleteListsOfBoard } from '../actions/ListsCollectionActions'
 
 function Board(props) {
   const dispatch = useDispatch()
   const { name, boardID } = props
 
   let checkDeletion = () => {
-    let isDelete = window.confirm('Вы уверены, что хотите удалить доску?')
+    let isDelete = window.confirm('Are you sure you want to delete this board?')
 
     if (isDelete) {
+      dispatch(deleteListsOfBoard(boardID))
       dispatch(deleteBoard(boardID))
     }
   }

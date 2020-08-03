@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
-import { addNote } from '../actions/NoteCollectionActions'
+import { addNote, deleteNotesOfList } from '../actions/NoteCollectionActions'
 import { deleteList } from '../actions/ListsCollectionActions'
 import { removeListFromCurBoard } from '../actions/CurrentBoardActions'
 import { v4 as uuidv4 } from 'uuid'
@@ -16,13 +16,6 @@ function List(props) {
     shallowEqual
   )
 
-  useEffect(() => {
-    localStorage.setItem('allNotes', JSON.stringify(allNotes))
-    return () => {
-      localStorage.setItem('allNotes', JSON.stringify(allNotes))
-    }
-  }, [])
-
   let notes = allNotes.filter((note) => note.list === listID)
 
   let checkDeletion = () => {
@@ -31,6 +24,7 @@ function List(props) {
     if (isDelete) {
       dispatch(deleteList(listID))
       dispatch(removeListFromCurBoard(listID))
+      dispatch(deleteNotesOfList(listID))
     }
   }
 
