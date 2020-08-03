@@ -49,6 +49,21 @@ export function deleteNote(noteID) {
   }
 }
 
+export function deleteNotesOfList(listID) {
+  return (dispatch, getState) => {
+    const allNotes = [...getState().noteCollection.allNotes]
+
+    for (let i = 0; i < allNotes.length; i++) {
+      if (allNotes[i].list === listID) {
+        allNotes.splice(allNotes[i], 1)
+        i--
+      }
+    }
+
+    dispatch(setNotes(allNotes))
+  }
+}
+
 export const setNotes = (listOfNotes) => {
   return {
     type: 'SET_NOTES',
