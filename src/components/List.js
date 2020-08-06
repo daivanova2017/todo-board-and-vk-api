@@ -1,16 +1,27 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
-import { addNote, deleteNotesOfList } from '../actions/NoteCollectionActions'
+import {
+  addNote,
+  deleteNotesOfList,
+  dragNote,
+} from '../actions/NoteCollectionActions'
 import { deleteList } from '../actions/ListsCollectionActions'
 import { removeListFromCurBoard } from '../actions/CurrentBoardActions'
+import { useDrop } from 'react-dnd'
+import { ItemTypes } from '../constants/ItemTypes'
 import { v4 as uuidv4 } from 'uuid'
 import Note from './Note'
 
 function List(props) {
   const { listID, listName } = props
   const [noteValue, setNoteValue] = useState('')
-  const dispatch = useDispatch()
 
+  const [, drop] = useDrop({
+    accept: ItemTypes.NOTE,
+    drop: (monitor) => dispatch(dragNote(monitor.id, listID)),
+  })
+
+  const dispatch = useDispatch()
   const allNotes = useSelector(
     (state) => state.noteCollection.allNotes,
     shallowEqual
@@ -71,7 +82,7 @@ function List(props) {
   }
 
   return (
-    <div className="List">
+    <div ref={drop} className="List">
       <div className="List__delete" onClick={() => checkDeletion()}>
         &#10008;
       </div>
