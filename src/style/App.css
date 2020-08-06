@@ -192,7 +192,10 @@ a {
   text-decoration: none;
   text-align: left;
   background-color: #caffde;
-  border-radius: 5px; }
+  border-radius: 5px;
+  cursor: grab; }
+  .Note:active {
+    cursor: grabbing; }
   .Note.compleated {
     color: gray; }
     .Note.compleated .Note__close, .Note.compleated h3 {

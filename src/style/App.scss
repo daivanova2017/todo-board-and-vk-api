@@ -239,6 +239,10 @@ a{
   text-align: left;
   background-color: rgb(202, 255, 222);
   border-radius: 5px;
+  cursor: grab;
+  &:active{
+    cursor: grabbing;
+  }
 
   &.compleated{
     .Note__close, h3{
