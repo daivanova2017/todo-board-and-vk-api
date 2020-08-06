@@ -12,6 +12,25 @@ export function addNote(noteID, noteName, listID) {
   }
 }
 
+export function dragNote(noteID, newListID) {
+  return (dispatch, getState) => {
+    const allNotes = [...getState().noteCollection.allNotes]
+    const curNote = {
+      ...allNotes.find((note) => {
+        return note.id === noteID
+      }),
+    }
+    curNote.list = newListID
+
+    const noteIndex = allNotes.findIndex((note) => {
+      return note.id === noteID
+    })
+    allNotes.splice(noteIndex, 1, curNote)
+
+    dispatch(setNotes(allNotes))
+  }
+}
+
 export function changeNoteStatus(id) {
   return (dispatch, getState) => {
     const allNotes = [...getState().noteCollection.allNotes]
