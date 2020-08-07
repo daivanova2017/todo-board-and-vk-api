@@ -1,4 +1,8 @@
 .add-list{
+  transition: .3s ease-in-out;
+  &:hover{
+    transform: scale(1.15);
+  }
   display: flex;
   margin: 20px;
   background-color: #0a2c74;

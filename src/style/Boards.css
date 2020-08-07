@@ -14,7 +14,10 @@
   padding-bottom: 30px;
   padding-top: 30px; }
   .createBoard:not(.form) {
-    cursor: pointer; }
+    cursor: pointer;
+    transition: .3s ease-in-out; }
+    .createBoard:not(.form):hover {
+      transform: scale(1.15); }
   .createBoard-form__header {
     width: 100%;
     display: flex;
@@ -61,7 +64,10 @@
   text-align: center;
   width: 270px;
   height: auto;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: .3s ease-in-out; }
+  .Board:hover {
+    transform: scale(1.15); }
   .Board__delete {
     width: 20px;
     color: red;

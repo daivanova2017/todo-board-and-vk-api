@@ -21,6 +21,10 @@ a{
   }
   border-radius: 50%;
   background-color: lightblue;
+  transition: .3s ease-in-out;
+  &:hover{
+    transform: scale(1.15) rotate(-15deg);
+  }
 }
 .BoardsPage{
   padding: 35px 60px;

@@ -1,6 +1,11 @@
 .createBoard{
   &:not(.form){
     cursor: pointer;
+    transition: .3s ease-in-out;
+
+    &:hover{
+      transform: scale(1.15);
+    }
   }
   background-color: rgb(159,231,164);
   margin: 20px;
@@ -79,6 +84,10 @@
   width: 270px;
   height: auto;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: .3s ease-in-out;
+  &:hover{
+    transform: scale(1.15);
+  }
   
   &__delete{
     width: 20px;

@@ -1,4 +1,5 @@
 .add-list {
+  transition: .3s ease-in-out;
   display: flex;
   margin: 20px;
   background-color: #0a2c74;
@@ -9,6 +10,8 @@
   padding: 0px 40px;
   align-items: center;
   border-radius: 5px; }
+  .add-list:hover {
+    transform: scale(1.15); }
   .add-list_form {
     padding: 20px 20px 5px;
     height: 125px;
