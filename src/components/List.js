@@ -12,6 +12,8 @@ import { ItemTypes } from '../constants/ItemTypes'
 import { v4 as uuidv4 } from 'uuid'
 import Note from './Note'
 
+import '../style/Notes.css'
+
 function List(props) {
   const { listID, listName } = props
   const [noteValue, setNoteValue] = useState('')

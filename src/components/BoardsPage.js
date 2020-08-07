@@ -3,6 +3,8 @@ import { useSelector, shallowEqual } from 'react-redux'
 import CreateBoard from './CreateBoard'
 import Board from './Board'
 
+import '../style/Boards.css'
+
 function BoardsPage() {
   const boards = useSelector((state) => state.listOfBoards.boards, shallowEqual)
 

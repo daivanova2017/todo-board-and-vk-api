@@ -5,6 +5,8 @@ import List from './List'
 import { setCurrentBoard } from '../actions/CurrentBoardActions'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 
+import '../style/Lists.css'
+
 function OneBoardPage() {
   const { curID } = useParams()
   const dispatch = useDispatch()
